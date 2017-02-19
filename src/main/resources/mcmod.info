@@ -1,0 +1,16 @@
+[
+{
+  "modid": "codeic",
+  "name": "Ambicour-Robert_Yang-Codeic",
+  "description": "Using Blocky in Minecraft.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/RobertIndie/Codeic",
+  "updateUrl": "",
+  "authorList": ["RobertYang"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
