@@ -1,5 +1,6 @@
 package me.robertyang.codeic.client;
 
+import me.robertyang.codeic.BlockLoader;
 import me.robertyang.common.CommonProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -9,6 +10,7 @@ public class ClientProxy extends CommonProxy{
     public void preInit(FMLPreInitializationEvent event)
     {
         super.preInit(event);
+        BlockLoader.loadRender();
     }
 
     public void init(FMLInitializationEvent event)

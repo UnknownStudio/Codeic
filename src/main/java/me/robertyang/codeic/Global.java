@@ -13,6 +13,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Global class which contains many useful methods connect with forge.
  * @author Robert
+ * 
  */
 public class Global {
 
@@ -41,7 +42,7 @@ public class Global {
      * @param item
      */
     @SideOnly(Side.CLIENT)
-    public static void RegisterRender(Item item) 
+    public static void registerRender(Item item) 
     {
     	ResourceLocation name = item.getRegistryName();
         ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(name, "inventory"));   
@@ -53,7 +54,7 @@ public class Global {
      * @param metadata
      */
     @SideOnly(Side.CLIENT)
-    public static void RegisterRender(Item item,int metadata) 
+    public static void registerRender(Item item,int metadata) 
     {
     	ResourceLocation location = item.getRegistryName();
         ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(location, "inventory"));   
@@ -65,11 +66,11 @@ public class Global {
      * @param block
      */
     @SideOnly(Side.CLIENT)
-    public static void RegisterRender(Block block){
+    public static void registerRender(Block block){
     	/*Item item = Item.getItemFromBlock(block);
     	ResourceLocation name = block.getRegistryName();
     	ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(name, "inventory"));*/
-    	RegisterRender(block,0,block.getRegistryName().getResourcePath());
+    	registerRender(block,0,block.getRegistryName().getResourcePath());
     }
     
     /**
@@ -79,7 +80,7 @@ public class Global {
      * @param name
      */
     @SideOnly(Side.CLIENT)
-    public static void RegisterRender(Block block,int metadata,String name){
+    public static void registerRender(Block block,int metadata,String name){
     	Item item = Item.getItemFromBlock(block);
     	ResourceLocation location = new ResourceLocation(Codeic.modid,name);
     	ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(location, "inventory"));

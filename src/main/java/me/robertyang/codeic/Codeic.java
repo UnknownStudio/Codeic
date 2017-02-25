@@ -16,6 +16,7 @@ import me.robertyang.common.CommonProxy;
 /**
  * Codeic main class.
  * @author Robert
+ * 
  */
 @Mod(modid = Codeic.modid,version = Codeic.version)
 public class Codeic {
