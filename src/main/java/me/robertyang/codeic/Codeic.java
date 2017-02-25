@@ -15,6 +15,7 @@ import me.robertyang.common.CommonProxy;
 
 /**
  * Codeic main class.
+ * @author Robert
  */
 @Mod(modid = Codeic.modid,version = Codeic.version)
 public class Codeic {
@@ -23,11 +24,14 @@ public class Codeic {
 	public static final String modid = "codeic";
 	public static final String version = "1.0.0";
 	public static Logger logger;
-    @SidedProxy(clientSide = "com.github.ustc_zzzz.fmltutor.client.ClientProxy", serverSide = "com.github.ustc_zzzz.fmltutor.common.CommonProxy")
+	//MOD proxy
+    @SidedProxy(clientSide = "me.robertyang.codeic.client.ClientProxy", 
+    			serverSide = "me.robertyang.codeic.common.CommonProxy")
     public static CommonProxy proxy;
 		
     @Instance(modid)
     public static Codeic instance;
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
