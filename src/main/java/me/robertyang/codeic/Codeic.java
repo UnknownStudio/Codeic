@@ -29,13 +29,14 @@ public class Codeic {
     @SidedProxy(clientSide = "me.robertyang.codeic.client.ClientProxy", 
     			serverSide = "me.robertyang.codeic.common.CommonProxy")
     public static CommonProxy proxy;
-		
+
     @Instance(modid)
     public static Codeic instance;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	logger = event.getModLog();
         proxy.preInit(event);
     }
 
