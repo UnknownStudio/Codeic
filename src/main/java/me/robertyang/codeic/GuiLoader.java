@@ -21,6 +21,8 @@ public class GuiLoader implements IGuiHandler
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
     {
     	switch (ID) {
+    	case Gui_ExecuteBlock:
+    		return new GuiExecuteBlock(world,new BlockPos(x,y,z));
 		default:
 			return null;
 		}

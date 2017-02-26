@@ -8,23 +8,29 @@ import javax.swing.text.Position;
 import me.robertyang.codeic.Codeic;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatAllowedCharacters;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import scala.annotation.implicitNotFound;
+import scala.reflect.internal.Trees.New;
 
 import org.lwjgl.input.*;
 
 public class GuiExecuteBlock extends GuiScreen {
 	
-	public int width = 260;
-	public int height = 240;
+	public int width = 256;
+	public int height = 133;
 	public int maxLinesCont = 20;
 	public int x = 150;
 	public int y = 50;
 	public int lineHeight = 5;
 	public int fontColor = 0x3366FF;
+	public static final ResourceLocation texture = new ResourceLocation(Codeic.modid + ":textures/gui/gui_executeblock.png");
 	
 	public World world;
 	public BlockPos pos;
@@ -57,7 +63,7 @@ public class GuiExecuteBlock extends GuiScreen {
     	{
     		commands.add("");
     	}
-    	lineHeight = this.fontRendererObj.getWordWrappedHeight("", 1);
+    	lineHeight = this.fontRendererObj.FONT_HEIGHT;
     	height = lineHeight*maxLinesCont;
     	width = this.fontRendererObj.getStringWidth(new char[20].toString());
     	//Useless
@@ -108,8 +114,13 @@ public class GuiExecuteBlock extends GuiScreen {
     /**
      * Draws the screen and all the components in it.
      */
+    @SideOnly(Side.CLIENT)
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+    	GlStateManager.color(1.0F, 1.0F, 1.0F);
+    	this.mc.getTextureManager().bindTexture(texture);
+    	this.drawTexturedModalRect(x, y, 0, 0, this.width, this.height);
+    	//this.drawDefaultBackground();
     	for (int i = 0;i<commands.size();i++) {
     		String command = commands.get(i);
     		this.drawString(this.fontRendererObj, 
@@ -134,6 +145,10 @@ public class GuiExecuteBlock extends GuiScreen {
     	{
     		Codeic.logger.info("WRONG:" + "out of Index");
     		return;
+    	}
+    	if(this.fontRendererObj.getStringWidth(commands.get(cursorPosition))+this.fontRendererObj.getCharWidth(typedChar)>=width)
+    	{
+    		createNewCommandLine();
     	}
     	commands.set(cursorPosition, commands.get(cursorPosition).concat(String.valueOf(typedChar)));
     }
