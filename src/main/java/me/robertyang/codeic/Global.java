@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -86,5 +87,15 @@ public class Global {
     	ResourceLocation location = new ResourceLocation(Codeic.modid,name);
     	ModelLoader.setCustomModelResourceLocation(item, metadata, new ModelResourceLocation(location, "inventory"));
         ModelLoader.registerItemVariants(item, location);
+    }
+    
+    /**
+     * Register tileEntity
+     * @param tileEntityClass
+     * @param id
+     */
+    public static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id)
+    {
+        GameRegistry.registerTileEntity(tileEntityClass, Codeic.modid + ":" + id);
     }
 }

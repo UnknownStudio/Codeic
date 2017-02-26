@@ -2,6 +2,7 @@ package me.robertyang.codeic;
 
 import me.robertyang.codeic.client.gui.GuiExecuteBlock;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -30,7 +31,7 @@ public class GuiLoader implements IGuiHandler
     {
     	switch (ID) {
 		case Gui_ExecuteBlock:
-			return new GuiExecuteBlock();
+			return new GuiExecuteBlock(world,new BlockPos(x,y,z));
 
 		default:
 			return null;

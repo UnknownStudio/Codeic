@@ -3,9 +3,16 @@ package me.robertyang.codeic.client.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.swing.text.Position;
+
 import me.robertyang.codeic.Codeic;
+import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatAllowedCharacters;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import scala.annotation.implicitNotFound;
 
 import org.lwjgl.input.*;
 
@@ -17,8 +24,20 @@ public class GuiExecuteBlock extends GuiScreen {
 	public int x = 150;
 	public int y = 50;
 	public int lineHeight = 5;
+	public int fontColor = 0x3366FF;
+	
+	public World world;
+	public BlockPos pos;
 	
 	public ArrayList<String> commands = new ArrayList<String>();
+	
+	public GuiExecuteBlock(World worldIn,BlockPos pos)
+	{
+		this.world = worldIn;
+		this.pos = pos;
+		TileEntityExecuteBlock message = (TileEntityExecuteBlock)worldIn.getTileEntity(pos);
+		commands = message.commands;
+	}
     
     /**
      * Returns true if this GUI should pause the game when it is displayed in single-player
@@ -97,8 +116,16 @@ public class GuiExecuteBlock extends GuiScreen {
     				command.concat(i==cursorPosition?cursorString:""), 
     				x, 
     				y+i*lineHeight, 
-    				0x3366FF);
+    				fontColor);
 		}
+    }
+    
+    /**
+     * Called when the screen is unloaded. Used to disable keyboard repeat events
+     */
+    public void onGuiClosed()
+    {
+    	world.setTileEntity(pos, new TileEntityExecuteBlock().getTileEntity(commands));
     }
     
     void appendCharToCommandLine(char typedChar)
