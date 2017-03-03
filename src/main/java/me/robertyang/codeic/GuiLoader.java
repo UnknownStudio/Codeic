@@ -22,7 +22,7 @@ public class GuiLoader implements IGuiHandler
     {
     	switch (ID) {
     	case Gui_ExecuteBlock:
-    		return new GuiExecuteBlock(world,new BlockPos(x,y,z));
+    		return null;
 		default:
 			return null;
 		}
@@ -34,7 +34,6 @@ public class GuiLoader implements IGuiHandler
     	switch (ID) {
 		case Gui_ExecuteBlock:
 			return new GuiExecuteBlock(world,new BlockPos(x,y,z));
-
 		default:
 			return null;
 		}

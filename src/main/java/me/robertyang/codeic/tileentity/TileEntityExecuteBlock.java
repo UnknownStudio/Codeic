@@ -46,6 +46,11 @@ public class TileEntityExecuteBlock extends TileEntity {
     }
     public static ArrayList<String> stringToStringArray(String value)
     {
-    	return (ArrayList<String>)Arrays.asList(value.split("\n"));
+    	String[] array = value.split("\n");
+    	ArrayList<String> result = new ArrayList<String>();
+    	for (String string : array) {
+			result.add(string);
+		}
+    	return result;
     }
 }

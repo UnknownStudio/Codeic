@@ -2,6 +2,7 @@ package me.robertyang.common;
 
 import me.robertyang.codeic.BlockLoader;
 import me.robertyang.codeic.GuiLoader;
+import me.robertyang.codeic.PacketLoader;
 import me.robertyang.codeic.TileEntityLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -14,6 +15,7 @@ public class CommonProxy {
         BlockLoader.loadBlock();
         new GuiLoader();
         new TileEntityLoader(event);
+        new PacketLoader();
     }
 
     public void init(FMLInitializationEvent event)

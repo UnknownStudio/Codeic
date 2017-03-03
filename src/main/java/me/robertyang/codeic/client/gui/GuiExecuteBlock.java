@@ -3,22 +3,18 @@ package me.robertyang.codeic.client.gui;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.text.Position;
-
 import me.robertyang.codeic.Codeic;
+import me.robertyang.codeic.PacketLoader;
+import me.robertyang.codeic.packet.PacketExecuteBlock;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatAllowedCharacters;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.annotation.implicitNotFound;
-import scala.reflect.internal.Trees.New;
-
 import org.lwjgl.input.*;
 
 public class GuiExecuteBlock extends GuiScreen {
@@ -136,7 +132,8 @@ public class GuiExecuteBlock extends GuiScreen {
      */
     public void onGuiClosed()
     {
-    	world.setTileEntity(pos, new TileEntityExecuteBlock().getTileEntity(commands));
+    	//world.setTileEntity(pos, new TileEntityExecuteBlock().getTileEntity(commands));
+    	PacketLoader.INSTANCE.sendToServer(new PacketExecuteBlock(commands,pos.getX(),pos.getY(),pos.getZ()));
     }
     
     void appendCharToCommandLine(char typedChar)

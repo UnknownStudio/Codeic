@@ -7,10 +7,11 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.annotation.implicitNotFound;
 
 /**
  * Global class which contains many useful methods connect with forge.
@@ -97,5 +98,10 @@ public class Global {
     public static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id)
     {
         GameRegistry.registerTileEntity(tileEntityClass, Codeic.modid + ":" + id);
+    }
+    
+    public static SimpleNetworkWrapper registerSimpleChannel()
+    {
+    	return NetworkRegistry.INSTANCE.newSimpleChannel(Codeic.modid);
     }
 }
