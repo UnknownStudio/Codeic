@@ -22,23 +22,10 @@ public class TileEntityExecuteBlock extends TileEntity{
 	public ArrayList<String> commands = new ArrayList<String>();
 	public static final String Key_commands = "commands";
 	
-	public TileEntityExecuteBlock(BlockPos pos, int metadata, NBTTagCompound nbtTagCompound) {
-		this.pos = pos;
-		
-	}
-	
-	public TileEntityExecuteBlock()
-	{
-		
-	}
-	
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
-        Codeic.logger.info("read:" + compound.getString(Key_commands));
-        //commands = new ArrayList<String>();
-        //commands.add("sssssssssgege");
         ArrayList<String> message = stringToStringArray(compound.getString(Key_commands));
         commands = message;
     }
@@ -47,18 +34,18 @@ public class TileEntityExecuteBlock extends TileEntity{
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
         super.writeToNBT(compound);       
-        Codeic.logger.info("write:" + stringArrayToString(commands));
         compound.setString(Key_commands, stringArrayToString(commands));
         return compound;
     }
     
     public static String stringArrayToString(ArrayList<String> value)
     {
+    	if(value.size()==0)return "";
     	StringBuilder resultTemp = new StringBuilder();
     	for(int i = 0;i<value.size();i++)
     	{
     		resultTemp.append(value.get(i));
-    		resultTemp.append("a");
+    		resultTemp.append("\n");
     	}
     	String result = resultTemp.toString();
     	result = result.substring(0,result.length()==0?0:result.length()-1);
@@ -66,7 +53,7 @@ public class TileEntityExecuteBlock extends TileEntity{
     }
     public static ArrayList<String> stringToStringArray(String value)
     {
-    	String[] array = value.split("a");
+    	String[] array = value.split("\n");
     	ArrayList<String> result = new ArrayList<String>();
     	for (String string : array) {
 			result.add(string);
