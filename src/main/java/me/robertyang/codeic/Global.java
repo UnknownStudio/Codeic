@@ -97,7 +97,9 @@ public class Global {
      */
     public static void registerTileEntity(Class<? extends TileEntity> tileEntityClass, String id)
     {
-        GameRegistry.registerTileEntity(tileEntityClass, Codeic.modid + ":" + id);
+    	Codeic.logger.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        GameRegistry.registerTileEntity(tileEntityClass,  id);
+    	Codeic.logger.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     }
     
     public static SimpleNetworkWrapper registerSimpleChannel()

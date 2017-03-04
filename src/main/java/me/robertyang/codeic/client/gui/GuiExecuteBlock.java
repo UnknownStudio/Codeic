@@ -62,6 +62,7 @@ public class GuiExecuteBlock extends GuiScreen {
     	lineHeight = this.fontRendererObj.FONT_HEIGHT;
     	height = lineHeight*maxLinesCont;
     	width = this.fontRendererObj.getStringWidth(new char[20].toString());
+    	Codeic.logger.info("==============================================Draw");
     	//Useless
     	//x = mc.displayWidth/2-width/2;
     	//y = mc.displayHeight/2-height/2;

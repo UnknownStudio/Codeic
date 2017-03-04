@@ -62,9 +62,12 @@ public class PacketExecuteBlock implements IMessage{
 		public IMessage onMessage(PacketExecuteBlock message, MessageContext ctx) {
 			Codeic.logger.info(String.format("Setting... X:%d Y:%d Z:%d line:%s", message.X,message.Y,message.Z,message.commands.get(0)));
 			World world = ctx.getServerHandler().playerEntity.getEntityWorld();
-			world.setTileEntity(new BlockPos(message.X, message.Y, message.Z), new TileEntityExecuteBlock().getTileEntity(message.commands));
-			TileEntity tileEntity = world.getTileEntity(new BlockPos(message.X,message.Y,message.Z));
-			tileEntity = new TileEntityExecuteBlock().getTileEntity(message.commands);
+			TileEntityExecuteBlock tileEntity = (TileEntityExecuteBlock)world.getTileEntity(new BlockPos(message.X, message.Y, message.Z));
+			tileEntity.commands = message.commands;
+			//tileEntity.markDirty();
+			world.setTileEntity(new BlockPos(message.X, message.Y, message.Z), tileEntity);
+			//TileEntity tileEntity = world.getTileEntity(new BlockPos(message.X,message.Y,message.Z));
+			//tileEntity = new TileEntityExecuteBlock().getTileEntity(message.commands);
 			return null;
 		}
 		
