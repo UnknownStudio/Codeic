@@ -2,6 +2,7 @@ package me.robertyang.codeic.tileentity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 
 import javax.annotation.Nullable;
 
@@ -17,24 +18,56 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class TileEntityExecuteBlock extends TileEntity{
+public class TileEntityExecuteBlock extends TileEntity implements ITickable{
 	
 	public ArrayList<String> commands = new ArrayList<String>();
 	public static final String Key_commands = "commands";
-	
+	public Boolean isPowered = false;
+	public static final String Key_isPowered = "ispowered";
+	public int executeLocation = -1;
+	public static final String Key_executeLocation = "executelocation";
+	public int executeLineCountPerTick = 10;
+	public static final String Key_executeLineCountPerTick = "executeLineCounterPerTick";
+	public World world;
+    @Override
+    public void update() {
+		world = this.getWorld();
+		if (world.isRemote) return;   // don't bother doing anything on the client side.
+    	if(isPowered)
+    	{
+    		
+    	}
+    }
+    
+    public void command_set(String facing)
+    {
+    	if(facing=="north")
+    	{
+    		
+    	}
+    }
+    
+    
+    
+    
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         ArrayList<String> message = stringToStringArray(compound.getString(Key_commands));
         commands = message;
+        isPowered = compound.getBoolean(Key_isPowered);
+        executeLocation = compound.getInteger(Key_executeLocation);
     }
+    
 
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
-        super.writeToNBT(compound);       
+        super.writeToNBT(compound);  
         compound.setString(Key_commands, stringArrayToString(commands));
+        compound.setBoolean(Key_isPowered, isPowered);
+        compound.setInteger(Key_executeLocation, executeLocation);
         return compound;
     }
     
@@ -97,4 +130,5 @@ public class TileEntityExecuteBlock extends TileEntity{
   {
     this.readFromNBT(tag);
   }
+
 }

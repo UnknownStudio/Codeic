@@ -2,6 +2,7 @@ package me.robertyang.codeic.client.gui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import me.robertyang.codeic.Codeic;
 import me.robertyang.codeic.PacketLoader;
@@ -21,7 +22,8 @@ public class GuiExecuteBlock extends GuiScreen {
 	
 	public int width = 256;
 	public int height = 133;
-	public int maxLinesCont = 20;
+	public int maxLinesCount = 100;
+	public int showMaxLineCount = 20;
 	public int x = 100;
 	public int y = 30;
 	public int lineHeight = 5;
@@ -60,7 +62,7 @@ public class GuiExecuteBlock extends GuiScreen {
     		commands.add("");
     	}
     	lineHeight = this.fontRendererObj.FONT_HEIGHT;
-    	height = lineHeight*maxLinesCont;
+    	height = lineHeight*showMaxLineCount;
     	//width = this.fontRendererObj.getStringWidth(new char[20].toString());
     	//Useless
     	//x = mc.displayWidth/2-width/2;
@@ -84,8 +86,16 @@ public class GuiExecuteBlock extends GuiScreen {
 			deleteCharFromCommandLine();
 			break;
 		case Keyboard.KEY_RETURN:
-			returnToCreateNewCommandLine();
+			createNewCommandLine();
 			break;
+		default:
+			break;
+		}
+    	switch (typedChar) {
+		case '\t':
+			appendCharToCommandLine(typedChar);
+			break;
+
 		default:
 			break;
 		}
@@ -113,16 +123,17 @@ public class GuiExecuteBlock extends GuiScreen {
     @SideOnly(Side.CLIENT)
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+    	UpdateShowPosition();
     	GlStateManager.color(1.0F, 1.0F, 1.0F);
     	this.mc.getTextureManager().bindTexture(texture);
     	this.drawTexturedModalRect(x, y, 0, 0, this.width, this.height);
     	//this.drawDefaultBackground();
-    	for (int i = 0;i<commands.size();i++) {
+    	for (int i = showPosition;i<Math.min(commands.size(),showPosition+showMaxLineCount);i++) {
     		String command = commands.get(i);
     		this.drawString(this.fontRendererObj, 
     				command.concat(i==cursorPosition?cursorString:""), 
     				x, 
-    				y+i*lineHeight, 
+    				y+(i-showPosition)*lineHeight, 
     				fontColor);
 		}
     	if((cursorPosition!=(commands.size()-1))&&commands.get(commands.size()-1)=="")
@@ -146,9 +157,8 @@ public class GuiExecuteBlock extends GuiScreen {
     	}
     	if(this.fontRendererObj.getStringWidth(commands.get(cursorPosition))+this.fontRendererObj.getCharWidth(typedChar)>=width)
     	{
-    		createNewCommandLine();
-    		++cursorPosition;
-    		appendCharToCommandLine(typedChar);
+    		if(createNewCommandLine())
+    			appendCharToCommandLine(typedChar);
     		return;
     	}
     	commands.set(cursorPosition, commands.get(cursorPosition).concat(String.valueOf(typedChar)));
@@ -165,16 +175,15 @@ public class GuiExecuteBlock extends GuiScreen {
     	}
     }
     
-    void createNewCommandLine()
+    boolean createNewCommandLine()
     {
-    	if(commands.size()<maxLinesCont)
-    		commands.add("");
-    }
-    
-    void returnToCreateNewCommandLine()
-    {
-    	createNewCommandLine();
-    	++cursorPosition;
+    	if(commands.size()<maxLinesCount)
+    	{
+    		commands.add(cursorPosition+1,"");
+    		++cursorPosition;
+    		return true;
+    	}
+    	return false;
     }
     
     void moveupCursor()
@@ -185,5 +194,13 @@ public class GuiExecuteBlock extends GuiScreen {
     void movedownCursor()
     {
     	cursorPosition += cursorPosition==(commands.size()-1)?0:1;
+    }
+    
+    void UpdateShowPosition()
+    {
+    	if(cursorPosition>showMaxLineCount-1)
+    		showPosition=cursorPosition-showMaxLineCount;
+    	else
+    		showPosition=0;
     }
 }

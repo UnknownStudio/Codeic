@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -44,4 +45,21 @@ public class BlockExecuteBlock extends Block implements ITileEntityProvider {
         return new TileEntityExecuteBlock();
     }
     
+    
+    /**
+     * Called when a neighboring block was changed and marks that this state should perform any checks during a neighbor
+     * change. Cases may include when redstone power is updated, cactus blocks popping off due to a neighboring solid
+     * block, etc.
+     */
+    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos)
+    {
+    	for (EnumFacing enumfacing : EnumFacing.values())
+    	{
+    		IBlockState neighborState = worldIn.getBlockState(pos.offset(enumfacing));
+    		if(neighborState.getWeakPower(worldIn, pos, enumfacing)>0)
+    		{
+    			Codeic.logger.info("POWERED");
+    		}
+    	}
+    }
 }
