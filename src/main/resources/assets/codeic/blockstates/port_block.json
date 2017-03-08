@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "ispowered=true": { "model": "codeic:port_block_on" },
+		"ispowered=false": { "model": "codeic:port_block_off" }
+    }
+}
