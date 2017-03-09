@@ -4,6 +4,7 @@ package me.robertyang.codeic.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -18,6 +19,12 @@ public class BlockPortBlock extends Block{
 		super(Material.GROUND);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(ISPOWERED, false));
 	}
+	
+    @Override
+    protected BlockStateContainer createBlockState()
+    {
+        return new BlockStateContainer(this, ISPOWERED);
+    }
 	
     @Override
     public IBlockState getStateFromMeta(int meta)
