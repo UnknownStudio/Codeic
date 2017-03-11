@@ -1,0 +1,73 @@
+#IF (oneline)
+IF {condition} THEN {statement} [ELSE {statement}]
+#
+
+#IF (multiline)
+IF {condition}
+{statement block}
+[ELSE IF {condition}
+{statement block}]...
+END IF
+#
+
+#WHILE (oneline)
+WHILE {condition} DO {statement}
+#
+
+#WHILE (multiline)
+WHILE {condition}
+{statement block}
+END WHILE
+#
+
+#DO WHILE (oneline)
+DO {statement} WHILE {condition}
+#
+
+#DO WHILE (multiline)
+DO
+{statement block}
+WHILE {condition}
+#
+
+#Command
+COMMAND {command name} [{parameter name}],...
+[{attribute settings}],...
+RUN
+{statement block}
+END RUN
+#
+
+#基础命令
+set:direction,power //输出红石能量
+stop //停止
+break //中断循环
+continue //下一个循环
+#
+
+#实例命令
+数组:
+value.add:element //数组增加元素
+value.get:index
+value.set:index
+value.remove:index
+所有:
+value.delete //从内存中删除变量
+#
+
+#命令属性
+ispause boolean
+#
+
+#
+定义变量:
+value = 10
+定义数组:
+valueArray[] 
+声明命令:
+USE {command name}
+设置节点:
+NODE {node name}
+跳转至节点:
+GOTO {node name}
+#

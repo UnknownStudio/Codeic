@@ -16,6 +16,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import scala.swing.event.KeyTyped;
+
 import org.lwjgl.input.*;
 
 public class GuiExecuteBlock extends GuiScreen {
@@ -46,6 +48,7 @@ public class GuiExecuteBlock extends GuiScreen {
     /**
      * Returns true if this GUI should pause the game when it is displayed in single-player
      */
+	@Override
     public boolean doesGuiPauseGame()
     {
         return false;
@@ -55,6 +58,7 @@ public class GuiExecuteBlock extends GuiScreen {
      * Adds the buttons (and other controls) to the screen in question. Called when the GUI is displayed and when the
      * window resizes, the buttonList is cleared beforehand.
      */
+	@Override
     public void initGui()
     {
     	if(commands.size()==0)
@@ -69,9 +73,14 @@ public class GuiExecuteBlock extends GuiScreen {
     	//y = mc.displayHeight/2-height/2;
     }
     
+	@Override
     protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
-    	Codeic.logger.info(keyCode);
+    	//Codeic.logger.info(keyCode);
+        if (GuiScreen.isKeyComboCtrlV(keyCode))
+        {
+            this.copyIntoCurrent(GuiScreen.getClipboardString());
+        }
     	switch (keyCode) {
 		case Keyboard.KEY_ESCAPE:
 			mc.displayGuiScreen(null);
@@ -95,7 +104,10 @@ public class GuiExecuteBlock extends GuiScreen {
 		case '\t':
 			appendCharToCommandLine(typedChar);
 			break;
-
+		case '\n':
+			createNewCommandLine();
+			break;
+			
 		default:
 			break;
 		}
@@ -105,9 +117,11 @@ public class GuiExecuteBlock extends GuiScreen {
     	}
     }
     
-    /**
+
+	/**
      * Called from the main game loop to update the screen.
      */
+	@Override
     public void updateScreen()
     {
     	
@@ -120,6 +134,7 @@ public class GuiExecuteBlock extends GuiScreen {
     /**
      * Draws the screen and all the components in it.
      */
+	@Override
     @SideOnly(Side.CLIENT)
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
@@ -143,6 +158,7 @@ public class GuiExecuteBlock extends GuiScreen {
     /**
      * Called when the screen is unloaded. Used to disable keyboard repeat events
      */
+	@Override
     public void onGuiClosed()
     {
     	PacketLoader.INSTANCE.sendToServer(new PacketExecuteBlock(commands,pos.getX(),pos.getY(),pos.getZ()));
@@ -203,4 +219,14 @@ public class GuiExecuteBlock extends GuiScreen {
     	else
     		showPosition=0;
     }
+    
+    void copyIntoCurrent(String clipboardString) throws IOException 
+    {
+		for (char code : clipboardString.toCharArray()) {
+			if(code=='\n')
+				createNewCommandLine();
+			else
+				appendCharToCommandLine(code);
+		}
+	}
 }
