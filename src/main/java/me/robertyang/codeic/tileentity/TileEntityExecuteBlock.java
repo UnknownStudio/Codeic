@@ -9,11 +9,15 @@ import javax.annotation.Nullable;
 import org.fusesource.jansi.AnsiRenderer.Code;
 
 import me.robertyang.codeic.Codeic;
+import me.robertyang.codeic.Debug;
+import me.robertyang.codeic.block.BlockPortBlock;
+import me.robertyang.codeic.logic.Runner;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -28,36 +32,45 @@ public class TileEntityExecuteBlock extends TileEntity implements ITickable{
 	public static final String Key_executeLocation = "executelocation";
 	public int executeLineCountPerTick = 10;
 	public static final String Key_executeLineCountPerTick = "executeLineCounterPerTick";
+	public int[] outputPower =  new int[6];//Use EnumFacing to operate it.
 	public World world;
+	public Runner runner = new Runner();
     @Override
     public void update() {
 		world = this.getWorld();
 		if (world.isRemote) return;   // don't bother doing anything on the client side.
     	if(isPowered)
     	{
-    		
+    		Codeic.logger.info("Run");
+    		for (int i = 0; i < commands.size(); i++) {
+    			Codeic.logger.info("P0:" + commands.get(i));
+				runner.executeInstruction(this, commands.get(i));
+			}
+    		isPowered=false;
+    		Codeic.logger.info("End");
     	}
     }
     
-    public void command_set(String facing)
+    public void command_set(EnumFacing facing,int power)
     {
-    	if(facing=="north")
-    	{
-    		
+    	IBlockState state = world.getBlockState(pos.offset(facing));
+    	if(state.getBlock() instanceof BlockPortBlock){
+    		world.notifyNeighborsOfStateChange(pos, blockType, false);
     	}
     }
-    
-    
-    
-    
+          
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
+    	outputPower = new int[]{0,0,0,0,0,0};
         super.readFromNBT(compound);
         ArrayList<String> message = stringToStringArray(compound.getString(Key_commands));
         commands = message;
         isPowered = compound.getBoolean(Key_isPowered);
         executeLocation = compound.getInteger(Key_executeLocation);
+        for (EnumFacing enumFacing : EnumFacing.values()) {
+			outputPower[enumFacing.getIndex()] = compound.getInteger("output_"+enumFacing);
+		}
     }
     
 
@@ -68,6 +81,9 @@ public class TileEntityExecuteBlock extends TileEntity implements ITickable{
         compound.setString(Key_commands, stringArrayToString(commands));
         compound.setBoolean(Key_isPowered, isPowered);
         compound.setInteger(Key_executeLocation, executeLocation);
+        for (EnumFacing enumFacing : EnumFacing.values()) {
+			compound.setInteger("output_"+enumFacing , outputPower[enumFacing.getIndex()]);
+		}
         return compound;
     }
     

@@ -1,25 +1,31 @@
 package me.robertyang.codeic.logic;
 
-import me.robertyang.codeic.Debug;
-import me.robertyang.codeic.logic.CommandGroup.Packet;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import me.robertyang.codeic.Codeic;
+import me.robertyang.codeic.logic.BuiltInData.Packet;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 
 public class Runner {
 	
-	static CommandGroup defaultCommandGroup = new CommandGroup();
+	public static BuiltInData builtInData = new BuiltInData();
+	
+	public Map<String,Integer> commandGroup = new HashMap<String,Integer>();
+	public ValuePool values = new ValuePool();
 	
 	public Runner()
 	{
 
 	}
 	
-	public boolean executeCommand(TileEntityExecuteBlock teb,String command)
+	public boolean executeInstruction(TileEntityExecuteBlock teb,String instruction)
 	{
-		Packet packet = defaultCommandGroup.getPacket(command);
+		Packet packet = builtInData.getPacket(instruction);
 		switch (packet.type) {
 		case useCommand:
-			command_set(teb, packet);
-			break;
+			return command_useCommand(teb, packet);
 
 		default:
 			break;
@@ -27,10 +33,11 @@ public class Runner {
 		return false;
 	}
 	
-	public boolean command_set(TileEntityExecuteBlock teb,Packet packet)
+	public boolean command_useCommand(TileEntityExecuteBlock teb,Packet packet)
 	{
-		String src = packet.matcher.group();
-		Debug.log(src);
-		return false;
+		String[] src = packet.matcher.group().split(":",2);
+		String commandName = src[0];
+		String[] parameters = src[1].split(",");
+		return BuiltIn.executeCommand(this, teb, commandName, parameters);
 	}
 }

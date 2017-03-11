@@ -58,6 +58,7 @@ public class BlockExecuteBlock extends Block implements ITileEntityProvider {
     		IBlockState neighborState = worldIn.getBlockState(pos.offset(enumfacing));
     		if(neighborState.getWeakPower(worldIn, pos, enumfacing)>0)
     		{
+    			((TileEntityExecuteBlock)worldIn.getTileEntity(pos)).isPowered = true;
     			Codeic.logger.info("POWERED");
     		}
     	}
