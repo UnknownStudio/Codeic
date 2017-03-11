@@ -1,7 +1,5 @@
 package me.robertyang.codeic.logic;
 
-import me.robertyang.codeic.Codeic;
-import me.robertyang.codeic.Debug;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 import net.minecraft.util.EnumFacing;
 
@@ -20,7 +18,7 @@ public class BuiltIn {
 		String power = parameters[1];
 		if(runner.values.getValue(direction)==(Object)BuiltInData.BuiltInValue.north)
 		{
-			teb.command_set(EnumFacing.NORTH,Integer.getInteger(power));
+			teb.command_set(EnumFacing.NORTH,Integer.parseInt(power));
 			//Debug.log("DONE");
 			return true;
 		}

@@ -42,10 +42,16 @@ public class TileEntityExecuteBlock extends TileEntity implements ITickable{
     	if(isPowered)
     	{
     		Codeic.logger.info("Run");
-    		for (int i = 0; i < commands.size(); i++) {
-    			Codeic.logger.info("P0:" + commands.get(i));
-				runner.executeInstruction(this, commands.get(i));
-			}
+    		try{
+        		for (int i = 0; i < commands.size(); i++) {
+        			Debug.log("Instruction:" + commands.get(i));
+    				runner.executeInstruction(this, commands.get(i));
+    			}       		
+    		}
+    		catch(Exception e)
+    		{
+    			Debug.log(e.getMessage());
+    		}
     		isPowered=false;
     		Codeic.logger.info("End");
     	}
@@ -55,6 +61,7 @@ public class TileEntityExecuteBlock extends TileEntity implements ITickable{
     {
     	IBlockState state = world.getBlockState(pos.offset(facing));
     	if(state.getBlock() instanceof BlockPortBlock){
+    		outputPower[facing.getIndex()] = power;
     		world.notifyNeighborsOfStateChange(pos, blockType, false);
     	}
     }

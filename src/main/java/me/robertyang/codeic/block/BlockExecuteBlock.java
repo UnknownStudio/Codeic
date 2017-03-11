@@ -63,4 +63,9 @@ public class BlockExecuteBlock extends Block implements ITileEntityProvider {
     		}
     	}
     }
+    
+    public void notifyUpdateState()
+    {
+    	
+    }
 }
