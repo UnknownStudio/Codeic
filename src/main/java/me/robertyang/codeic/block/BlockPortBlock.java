@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockPortBlock extends Block{
@@ -46,4 +47,14 @@ public class BlockPortBlock extends Block{
         worldIn.setBlockState(pos, this.getDefaultState().withProperty(ISPOWERED, false));
     }
 
+    /**
+     * Called when a tile entity on a side of this block changes is created or is destroyed.
+     * @param world The world
+     * @param pos Block position in world
+     * @param neighbor Block position of neighbor
+     */
+    @Override
+    public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor){
+    	
+    }
 }
