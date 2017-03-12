@@ -29,3 +29,7 @@ hs_err_pid*
 /LICENSE-new.txt
 /bin/
 /keyboard.png
+/Abacus/.gitignore
+/Abacus/CMakeLists.txt
+/Abacus/LICENSE.txt
+/Abacus/README.md
