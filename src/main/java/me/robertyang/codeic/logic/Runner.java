@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import me.robertyang.codeic.Codeic;
+import me.robertyang.codeic.logic.BuiltInData.InstructionType;
 import me.robertyang.codeic.logic.BuiltInData.Packet;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 
