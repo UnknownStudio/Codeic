@@ -20,20 +20,23 @@ public class BuiltInData
 	 * Key: command regex
 	 * Data: command name
 	 */
-	Map<String,InstructionType> instructions = new HashMap<String, InstructionType>();
+	//Map<String,InstructionType> instructions = new HashMap<String, InstructionType>();
 	
 	Map<String,BuiltInValue> values = new HashMap<String, BuiltInData.BuiltInValue>();
 	
 	public BuiltInData()
 	{
-		initInstructions();
+		//initInstructions();
 		initValue();
 	}
 	
-	void initInstructions()
-	{
-		instructions.put(" *\\S+:(\\S+,?)+", InstructionType.useCommand);
-	}
+//	/**
+//	 * Register new instruction in this.
+//	 */
+//	void initInstructions()
+//	{
+//		instructions.put(" *\\S+:(\\S+,?)+", InstructionType.useCommand);
+//	}
 	
 	void initValue()
 	{
@@ -51,9 +54,26 @@ public class BuiltInData
 		}
 	}
 	
+	/**
+	 * Register instruction in this.
+	 * @author Robert
+	 *
+	 */
 	public enum InstructionType
 	{
-		useCommand
+		useCommand(" *\\S+:(\\S+,?)+"),
+		operateVariable("\\S+ *= *\\S+");
+		
+		private String regex;
+		public String getRegex()
+		{
+			return regex;
+		}
+		
+		private InstructionType(String regex)
+		{
+			
+		}
 	}
 	
 	/**
@@ -63,11 +83,10 @@ public class BuiltInData
 	 */
 	public Packet getPacket(String instruction)
 	{
-		for(String cmd :instructions.keySet())
-		{
-			Matcher matcher = Pattern.compile(cmd).matcher(instruction);
+		for (InstructionType instructionType : InstructionType.values()) {
+			Matcher matcher = Pattern.compile(instructionType.getRegex()).matcher(instruction);
 			if(matcher.find())
-				return new Packet(instructions.get(cmd), matcher);
+				return new Packet(instructionType, matcher);
 		}
 		return null;
 	}

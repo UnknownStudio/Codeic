@@ -10,8 +10,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import java.io.IOException;
+
 import org.apache.logging.log4j.Logger;
 
+import me.robertyang.codeic.test.Test3;
 import me.robertyang.common.CommonProxy;
 
 /**
@@ -38,6 +41,13 @@ public class Codeic {
     public void preInit(FMLPreInitializationEvent event)
     {
     	logger = event.getModLog();
+    	Debug.log("==================================================================");
+    	try {
+			Test3.main(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         proxy.preInit(event);
     }
 

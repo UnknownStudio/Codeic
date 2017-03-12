@@ -3,6 +3,11 @@ package me.robertyang.codeic.logic;
 import me.robertyang.codeic.tileentity.TileEntityExecuteBlock;
 import net.minecraft.util.EnumFacing;
 
+/**
+ * Execute built-in operation.
+ * @author Robert
+ *
+ */
 public class BuiltIn {
 	public static boolean executeCommand(Runner runner,TileEntityExecuteBlock teb,String commandName,String[] parameters)
 	{
@@ -11,8 +16,8 @@ public class BuiltIn {
 			cmd_set(runner, teb, parameters);
 		}
 		return false;
-	}
-	public static boolean cmd_set(Runner runner,TileEntityExecuteBlock teb,String[] parameters)
+	}		
+	static boolean cmd_set(Runner runner,TileEntityExecuteBlock teb,String[] parameters)
 	{
 		String direction = parameters[0];//It must be a value(include built-in value).
 		String power = parameters[1];
