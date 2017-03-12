@@ -1,9 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -13,9 +21,17 @@
       <Configuration>MinSizeRel</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="RelWithDebInfo|Win32">
       <Configuration>RelWithDebInfo</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -32,7 +48,19 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
@@ -44,7 +72,19 @@
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
@@ -57,26 +97,67 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-    <PropertyGroup>
-      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">J:\Ambicour\Codeic\Abacus\build\build\Debug\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">abacuslib.dir\Debug\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">abacuslibD</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">J:\Ambicour\Codeic\Abacus\build\build\Release\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">abacuslib.dir\Release\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">abacuslib</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">J:\Ambicour\Codeic\Abacus\build\build\MinSizeRel\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">abacuslib.dir\MinSizeRel\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">abacuslib</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
-      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">J:\Ambicour\Codeic\Abacus\build\build\RelWithDebInfo\</OutDir>
-      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">abacuslib.dir\RelWithDebInfo\</IntDir>
-      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">abacuslib</TargetName>
-      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
-    </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">J:\Ambicour\Codeic\Abacus\build\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">abacuslib.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">abacuslibD</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">abacuslibD</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">J:\Ambicour\Codeic\Abacus\build\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">abacuslib.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">abacuslib</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">abacuslib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">J:\Ambicour\Codeic\Abacus\build\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">abacuslib.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">abacuslib</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">abacuslib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">J:\Ambicour\Codeic\Abacus\build\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">abacuslib.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">abacuslib</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">abacuslib</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">.lib</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>Debug/</AssemblerListingLocation>
@@ -123,7 +204,41 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN64;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -155,7 +270,41 @@
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
-      <DebugInformationFormat></DebugInformationFormat>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -205,9 +354,42 @@
       <AdditionalOptions>%(AdditionalOptions)  /machine:X86</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>J:\Ambicour\Codeic\Abacus\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions)  /machine:X86</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="J:\Ambicour\Codeic\Abacus\CMakeLists.txt">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
 J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -217,10 +399,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
 J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -230,10 +425,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
 J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -243,10 +451,23 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule J:/Ambicour/Codeic/Abacus/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
 J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
@@ -256,9 +477,21 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+J:\cmake-3.8.0-rc2-win64-x64\bin\cmake.exe -HJ:/Ambicour/Codeic/Abacus -BJ:/Ambicour/Codeic/Abacus/build --check-stamp-file J:/Ambicour/Codeic/Abacus/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">J:/Ambicour/Codeic/Abacus/CMakeLists.txt;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInitialize.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCCompiler.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeCXXCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeSystemSpecificInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeGenericSystem.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\WindowsPaths.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-C.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\Ambicour\Codeic\Abacus\build\CMakeFiles\3.8.0-rc2\CMakeRCCompiler.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeRCInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCXXInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeLanguageInformation.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Compiler\MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC-CXX.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\Platform\Windows-MSVC.cmake;J:\cmake-3.8.0-rc2-win64-x64\share\cmake-3.8\Modules\CMakeCommonLanguageInclude.cmake;J:\Ambicour\Codeic\Abacus\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">J:\Ambicour\Codeic\Abacus\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">false</LinkObjects>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -280,18 +513,19 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\fprecision.h" />
     <ClInclude Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\intervalprecision.h" />
     <ClInclude Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\iprecision.h" />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\AST.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Abacus.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Beautifier.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Computer.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\ExprProcessor.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\ExprStream.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Parser.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Scanner.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\StreamPosition.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Token.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Variable.cpp"  />
-    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\precisioncore.cpp"  />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\AST.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Abacus.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Beautifier.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Computer.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\ExprProcessor.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\ExprStream.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Parser.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Scanner.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\StreamPosition.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Token.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\Variable.cpp" />
+    <ClCompile Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\precisioncore.cpp" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="J:\Ambicour\Codeic\Abacus\sources\precpkg\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>

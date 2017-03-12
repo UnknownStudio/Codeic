@@ -7,7 +7,7 @@
 
 #include <Abacus/Abacus.h>
 #include <iostream>
-
+#include "Codeic.h"
 
 using namespace Ac;
 
@@ -104,7 +104,42 @@ class Printer : public Visitor
 
 };
 
+std::string Compute(std::string expr)
+{
+	LogOutput log;
+	ConstantsSet constants;
+	ComputeMode mode;
+	return Compute(expr, mode, constants, &log);
+}
+
 int main()
+{
+	LogOutput log;
+	ConstantsSet constants;
+	ComputeMode mode;
+	std::string expr =
+		//"34834^32"
+		//"1.3^1234.0"
+		//"x*2 + y*0.1"
+		"-5*(sin(pi/3) + e^2)"
+		//"---3!!!"
+		//"5^-10"
+		//"|-5|"
+		//"1.2"
+		//"[dot([5, 1, 2], [5, 1, -1]), 2, 3]"
+		//"1/3"
+		//"-3 mod 5"
+		//"9876123^34"
+		;
+	std::cout << expr << " = " << Compute(expr, mode, constants, &log) << std::endl;
+#ifdef _WIN32
+	system("pause");
+#endif
+
+	return 0;
+}
+
+int tmain()
 {
     LogOutput log;
 

@@ -17,17 +17,18 @@ public class Test3 {
 
         TestDll1 INSTANCE = (TestDll1)Native.loadLibrary(path, TestDll1.class);
 
-        public void printf(String format, Object... args); 
+        //public void printf(String format, Object... args); 
         public int say(WString wString);
        
 
 }
-    static String path = new Test3().getClass().getResource("/").getFile().toString() + "test.dll";
+    static String path = "J:/test.dll"; 
+    		//new Test3().getClass().getResource("/").getFile().toString() + "test.dll";
     						//"/C:/Users/Robert/.gradle/caches/minecraft/net/minecraftforge/forge/1.11.2-13.20.0.2224/start/test.dll";
     public static void main(String args[]) throws IOException
 	{
-		//System.load(path);
-		InputStream inputStream1 = new Test3().getClass().getResourceAsStream("src/main/java/me/robertyang/codeic/dll/test.dll");
+		System.load(path);
+		/*InputStream inputStream1 = new Test3().getClass().getResourceAsStream("src/main/java/me/robertyang/codeic/dll/test.dll");
 		if(inputStream1!=null)Debug.log("YES1");
 		InputStream inputStream2 = new Test3().getClass().getResourceAsStream("/assets/codeic/dll/test.dll");
 		if(inputStream2!=null)Debug.log("YES2");
@@ -39,8 +40,8 @@ public class Test3 {
 		FileOutputStream fileOutputStream = new FileOutputStream(path);
 		fileOutputStream.write(data);
 		fileOutputStream.close();
-		path = path.substring(1, path.length());
-		Debug.log(""+TestDll1.INSTANCE.say(new WString("0.0")));
+		path = path.substring(1, path.length());*/
+		//Debug.log(""+TestDll1.INSTANCE.say(new WString("0.0")));
 		//TestDll1.INSTANCE.printf("Helloworld");
 		Debug.log("END");
 	}
