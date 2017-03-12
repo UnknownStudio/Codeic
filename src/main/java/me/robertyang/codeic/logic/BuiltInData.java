@@ -54,10 +54,15 @@ public class BuiltInData
 		}
 	}
 	
+	/**
+	 * Register instruction in this.
+	 * @author Robert
+	 *
+	 */
 	public enum InstructionType
 	{
 		useCommand(" *\\S+:(\\S+,?)+"),
-		operateVariable("");
+		operateVariable("\\S+ *= *\\S+");
 		
 		private String regex;
 		public String getRegex()
