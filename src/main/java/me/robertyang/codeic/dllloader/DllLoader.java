@@ -5,13 +5,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.sun.jna.Library;
+import com.sun.jna.Native;
+import com.sun.jna.WString;
+
+import me.robertyang.codeic.Debug;
 import me.robertyang.codeic.test.Test3;
+import me.robertyang.codeic.test.Test3.TestDll1;
 
 public class DllLoader {
-	static String path = new Test3().getClass().getResource("/").getFile().toString();
+	static String path = new DllLoader().getClass().getResource("/").getFile().toString();
 	enum FileName
 	{
 		//test("test.dll");
+		abacus("codeic.dll","/assets/codeic/dll/codeic.dll")
 		;
 		String fileName = "";
 		String resourcePath = "";
@@ -31,10 +38,11 @@ public class DllLoader {
 	}
 	public static void load()
 	{
-		
+		if(DllAbacus.INSTANCE.Run())
+			Debug.log("GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOD!");
 	}
 	
-	static void moveFiles() throws IOException
+	public static void moveFiles() throws IOException
 	{
 		for (FileName fileName : FileName.values()) {
 			InputStream inputStream = new DllLoader().getClass().getResourceAsStream(fileName.getResourcePath());
@@ -46,5 +54,16 @@ public class DllLoader {
 			fileOutputStream.write(data);
 			fileOutputStream.close();
 		}
+	}
+	
+	static String path_Abacus;
+	public interface DllAbacus extends Library
+	{
+		DllAbacus INSTANCE = (DllAbacus)Native.loadLibrary(path+FileName.abacus.getFileName(), DllAbacus.class);
+
+        //public void printf(String format, Object... args); 
+        public int Compute(WString wString);
+        
+        public boolean Run();
 	}
 }
