@@ -107,8 +107,8 @@ commands = [
  ['broadcast %m.broadcast and wait', ' ', 5, 'doBroadcastAndWait', ''],
  ['wait %n secs', ' ', 6, 'wait:elapsed:from:', 1],
  ['-'],
- ['repeat %n', 'c', 6, 'doRepeat', 10],
- ['forever', 'cf', 6, 'doForever'],
+ ['for(int i=0;i<%n;i++){', 'c', 6, 'doRepeat', 10],#repeat %n
+ ['while(true){', 'cf', 6, 'doForever'],#forever
  ['-'],
  ['if %b then', 'c', 6, 'doIf'],
  ['if %b then', 'e', 6, 'doIfElse'],
@@ -123,8 +123,8 @@ commands = [
  ['-'],
  ['wait %n secs', ' ', 106, 'wait:elapsed:from:', 1],
  ['-'],
- ['repeat %n', 'c', 106, 'doRepeat', 10],
- ['forever', 'cf', 106, 'doForever'],
+ ['for(int i=0;i<%n;i++){', 'c', 106, 'doRepeat', 10],#repeat %n
+ ['while(true){', 'cf', 106, 'doForever'],#repeat %n
  ['-'],
  ['if %b then', 'c', 106, 'doIf'],
  ['if %b then', 'e', 106, 'doIfElse'],
