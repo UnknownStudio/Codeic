@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.Logger;
 
+import me.robertyang.codeic.dllloader.DllLoader;
 import me.robertyang.codeic.test.Test3;
 import me.robertyang.common.CommonProxy;
 
@@ -43,7 +44,8 @@ public class Codeic {
     	logger = event.getModLog();
     	Debug.log("==================================================================");
     	try {
-			Test3.main(null);
+			DllLoader.moveFiles();
+			DllLoader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

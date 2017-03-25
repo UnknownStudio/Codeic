@@ -22,6 +22,7 @@
     <ClInclude Include="..\..\src\Abacus.h" />
     <ClInclude Include="..\..\src\AST.h" />
     <ClInclude Include="..\..\src\Beautifier.h" />
+    <ClInclude Include="..\..\src\Codeic.h" />
     <ClInclude Include="..\..\src\complexprecision.h" />
     <ClInclude Include="..\..\src\Computer.h" />
     <ClInclude Include="..\..\src\Export.h" />
@@ -42,6 +43,9 @@
     <ClCompile Include="..\..\src\Abacus.cpp" />
     <ClCompile Include="..\..\src\AST.cpp" />
     <ClCompile Include="..\..\src\Beautifier.cpp" />
+    <ClCompile Include="..\..\src\Codeic.cpp">
+      <FileType>CppCode</FileType>
+    </ClCompile>
     <ClCompile Include="..\..\src\Computer.cpp" />
     <ClCompile Include="..\..\src\ExprProcessor.cpp" />
     <ClCompile Include="..\..\src\ExprStream.cpp" />

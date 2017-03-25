@@ -5,7 +5,7 @@
  * See "LICENSE.txt" for license information.
  */
 
-#include <Abacus/Abacus.h>
+#include "Abacus.h"
 #include <iostream>
 #include "Codeic.h"
 
@@ -110,6 +110,11 @@ std::string Compute(std::string expr)
 	ConstantsSet constants;
 	ComputeMode mode;
 	return Compute(expr, mode, constants, &log);
+}
+
+bool Run()
+{
+	return true;
 }
 
 int main()
