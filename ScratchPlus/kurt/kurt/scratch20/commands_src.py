@@ -107,7 +107,7 @@ commands = [
  ['broadcast %m.broadcast and wait', ' ', 5, 'doBroadcastAndWait', ''],
  ['wait %n secs', ' ', 6, 'wait:elapsed:from:', 1],
  ['-'],
- ['repeat %n', 'c', 6, 'doRepeat', 10],
+ ['for i=1,%n,1 do', 'c', 6, 'doRepeat', 10],#repeat %n
  ['forever', 'cf', 6, 'doForever'],
  ['-'],
  ['if %b then', 'c', 6, 'doIf'],
@@ -123,7 +123,7 @@ commands = [
  ['-'],
  ['wait %n secs', ' ', 106, 'wait:elapsed:from:', 1],
  ['-'],
- ['repeat %n', 'c', 106, 'doRepeat', 10],
+ ['for i=1,%n,1 do', 'c', 106, 'doRepeat', 10],#repeat %n
  ['forever', 'cf', 106, 'doForever'],
  ['-'],
  ['if %b then', 'c', 106, 'doIf'],
