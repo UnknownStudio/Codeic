@@ -61,6 +61,6 @@ int main(int argc, char*argv[])
 	cout << "sum is:" << lua_tointeger(L, -1) << endl;
 	/* cleanup Lua */
 	lua_close(L);
-
+	cin.get();
 	return 0;
 }

@@ -1513,7 +1513,7 @@ class BaseBlockType(object):
                               for i in self.inserts)
         for insert in self.inserts:
             if insert.shape == 'stack':
-                return r + "}"
+                return r + "end"
 
         fmt = BaseBlockType.SHAPE_FMTS.get(self.shape, "%s")
         if not block_plugin:
