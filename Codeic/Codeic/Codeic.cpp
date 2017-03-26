@@ -54,13 +54,13 @@ int main(int argc, char*argv[])
 	/* run the script */
 	luaL_dofile(L, "e15.lua");
 
-	lua_getglobal(L, "avg");
-	cout << "avg is:" << lua_tointeger(L, -1) << endl;
-	lua_pop(L, 1);
-	lua_getglobal(L, "sum");
-	cout << "sum is:" << lua_tointeger(L, -1) << endl;
+	//lua_getglobal(L, "avg");
+	//cout << "avg is:" << lua_tointeger(L, -1) << endl;
+	//lua_pop(L, 1);
+	//lua_getglobal(L, "sum");
+	//cout << "sum is:" << lua_tointeger(L, -1) << endl;
 	/* cleanup Lua */
 	lua_close(L);
-
+	cin.get();
 	return 0;
 }

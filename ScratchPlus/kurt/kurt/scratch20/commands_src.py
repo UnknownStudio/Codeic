@@ -107,11 +107,11 @@ commands = [
  ['broadcast %m.broadcast and wait', ' ', 5, 'doBroadcastAndWait', ''],
  ['wait %n secs', ' ', 6, 'wait:elapsed:from:', 1],
  ['-'],
- ['for(int i=0;i<%n;i++){', 'c', 6, 'doRepeat', 10],#repeat %n
- ['while(true){', 'cf', 6, 'doForever'],#forever
+ ['for i=1,%n,1 do', 'c', 6, 'doRepeat', 10],#repeat %n
+ ['while(true)do', 'cf', 6, 'doForever'],#forever
  ['-'],
- ['if %b{', 'c', 6, 'doIf'],#if %b then
- ['if %b{', 'e', 6, 'doIfElse'],#if %b then
+ ['if %b then', 'c', 6, 'doIf'],
+ ['if %b then', 'e', 6, 'doIfElse'],
  ['wait until %b', ' ', 6, 'doWaitUntil'],
  ['repeat until %b', 'c', 6, 'doUntil'],
  ['-'],
@@ -123,11 +123,11 @@ commands = [
  ['-'],
  ['wait %n secs', ' ', 106, 'wait:elapsed:from:', 1],
  ['-'],
- ['for(int i=0;i<%n;i++){', 'c', 106, 'doRepeat', 10],#repeat %n
- ['while(true){', 'cf', 106, 'doForever'],#repeat %n
+ ['for i=1,%n,1 do', 'c', 106, 'doRepeat', 10],#repeat %n
+ ['while(true)do', 'cf', 106, 'doForever'],#forever
  ['-'],
- ['if %b{', 'c', 106, 'doIf'],#if %b then
- ['if %b{', 'e', 106, 'doIfElse'],#if %b then
+ ['if %b then', 'c', 106, 'doIf'],
+ ['if %b then', 'e', 106, 'doIfElse'],
  ['wait until %b', ' ', 106, 'doWaitUntil'],
  ['repeat until %b', 'c', 106, 'doUntil'],
  ['-'],
