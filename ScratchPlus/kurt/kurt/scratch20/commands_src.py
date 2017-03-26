@@ -110,8 +110,8 @@ commands = [
  ['for(int i=0;i<%n;i++){', 'c', 6, 'doRepeat', 10],#repeat %n
  ['while(true){', 'cf', 6, 'doForever'],#forever
  ['-'],
- ['if %b then', 'c', 6, 'doIf'],
- ['if %b then', 'e', 6, 'doIfElse'],
+ ['if %b{', 'c', 6, 'doIf'],#if %b then
+ ['if %b{', 'e', 6, 'doIfElse'],#if %b then
  ['wait until %b', ' ', 6, 'doWaitUntil'],
  ['repeat until %b', 'c', 6, 'doUntil'],
  ['-'],
@@ -126,8 +126,8 @@ commands = [
  ['for(int i=0;i<%n;i++){', 'c', 106, 'doRepeat', 10],#repeat %n
  ['while(true){', 'cf', 106, 'doForever'],#repeat %n
  ['-'],
- ['if %b then', 'c', 106, 'doIf'],
- ['if %b then', 'e', 106, 'doIfElse'],
+ ['if %b{', 'c', 106, 'doIf'],#if %b then
+ ['if %b{', 'e', 106, 'doIfElse'],#if %b then
  ['wait until %b', ' ', 106, 'doWaitUntil'],
  ['repeat until %b', 'c', 106, 'doUntil'],
  ['-'],
