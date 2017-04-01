@@ -14,7 +14,8 @@ build_path = ".\\build"
 eventID = 0
 valueID = 0
 spriteID = 0
-globalValueDict = {};
+variableDict = {};
+spriteDict = {};
 
 def tostring(o):
 	if isinstance(o,int):
@@ -22,41 +23,68 @@ def tostring(o):
 	return o.encode('utf-8')
 
 def getVariableID(name):
-	return tostring(globalValueDict[name])
+	return tostring(variableDict[name])
+	
+def getVariableName(name):
+	return 'CodeicVar_{}'.format(getVariableID(name))
 
 def setVariable(name,value):
 	global valueID
-	globalValueDict[name] = valueID
+	variableDict[name] = valueID
 	valueID = valueID + 1
 	return 'CodeicVar_{}="{}"--{}\n'.format(getVariableID(name),tostring(value),name)
 	
 def setList(name,list):
 	global valueID
-	globalValueDict[name] = valueID
+	variableDict[name] = valueID
 	valueID = valueID +1
 	result = "CodeicVar_"+getVariableID(name) + "={"
+	hasElement = 0
 	for item in list.items:
+		hasElement = 1
 		result += "\"" + tostring(item) + "\","
 	
-	result = result[:-1]
+	if hasElement:result = result[:-1]
+	
+	
 	result = result + "}\n"
 	return result
 	
-def setEvent(script,message):
+def setEvent(script,message):#Set global(stage) event
 	global eventID
 	result = '{}({},"{}")\n'.format(Codeic_regeisterEvent,tostring(eventID),message)#Register event
 	result += 'function Codeic_Event_{}()\n'.format(tostring(eventID))
 	for i in range(1,len(script.blocks)):
-		result = result + script.blocks[i].stringify() + "\n"
+		scr = script.blocks[i].stringify() + "\n"
+		result += scr
 	
-	result += "end"
+	result += "end\n"
 	eventID = eventID+1
 	return tostring(result)
 	
-def setSprite(sprite):
+def dumpSprite(sprite):
 	global spriteID
-	result = Codeic_regeisterSprite + "(" + spriteID + "," + sprite.name + ")\n"
-
+	global valueID
+	spriteDict[sprite.name] = spriteID
+	spriteID = spriteID+1
+	result = 'Codeic_{}=--{}\n'.format(spriteDict[sprite.name],tostring(sprite.name))
+	result += '{\n'
+	#Variable
+	hasVariable = 0
+	for variable in sprite.variables:
+		hasVariable = 1
+		variableDict[tostring(variable)] = valueID
+		valueID = valueID + 1
+		result += 'CodeicVar_{}="{}"--[[{}]],\n'.format(valueID,tostring(sprite.variables[variable].value),tostring(variable))
+		
+	if hasVariable:
+		result = result[:-2]#remove the last comma and '\n'
+		result += '\n'
+	
+	result += '}\n'
+	
+	return result
+	
 #Create build directory
 print "Loading scratch project file"
 if os.path.exists(build_path):shutil.rmtree(build_path)	
@@ -92,7 +120,7 @@ for costume in stage.costumes:
 #Sprite
 spriteID = 0
 for sprite in project.sprites:
-	print sprite.name
+	global_script.write(dumpSprite(sprite))
 
 #Close
 global_script.flush()
