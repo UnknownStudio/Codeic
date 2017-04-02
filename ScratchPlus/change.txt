@@ -1,1 +1,11 @@
 变量不可只为i
+'xxx'转成相应的类型
+
+Add:
+Codeic_setBackgroundColor(byte,byte,byte)
+
+Format:
+定义变量：Codeic_变量名=...
+注册事件：Codeic_regeisterEvent(ID,事件接受的消息名)
+事件函数：Codeic_Receive_ID
+注册角色：Codeic_regeisterSprite(ID,角色名称)

@@ -4,3 +4,7 @@ do
 	result=result+1
 end
 print(result)
+while(true)
+do
+	print("HelloWorld")
+end

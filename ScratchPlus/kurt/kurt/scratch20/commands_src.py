@@ -110,8 +110,8 @@ commands = [
  ['for i=1,%n,1 do', 'c', 6, 'doRepeat', 10],#repeat %n
  ['while(true)do', 'cf', 6, 'doForever'],#forever
  ['-'],
- ['if %b then', 'c', 6, 'doIf'],
- ['if %b then', 'e', 6, 'doIfElse'],
+ ['if %b then', 'c', 6, 'doIf'],#if %b then
+ ['if %b then', 'e', 6, 'doIfElse'],#if %b then
  ['wait until %b', ' ', 6, 'doWaitUntil'],
  ['repeat until %b', 'c', 6, 'doUntil'],
  ['-'],
@@ -126,8 +126,8 @@ commands = [
  ['for i=1,%n,1 do', 'c', 106, 'doRepeat', 10],#repeat %n
  ['while(true)do', 'cf', 106, 'doForever'],#forever
  ['-'],
- ['if %b then', 'c', 106, 'doIf'],
- ['if %b then', 'e', 106, 'doIfElse'],
+ ['if %b then', 'c', 106, 'doIf'],#if %b then
+ ['if %b then', 'e', 106, 'doIfElse'],#if %b then
  ['wait until %b', ' ', 106, 'doWaitUntil'],
  ['repeat until %b', 'c', 106, 'doUntil'],
  ['-'],
