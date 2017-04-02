@@ -19,7 +19,6 @@ variableDict = {};
 spriteDict = {};
 
 def tostring(o):
-	print type(o)
 	if isinstance(o,int):
 		return tostring(str(o))
 	return o.encode('utf-8').strip()
@@ -110,6 +109,7 @@ def dumpSprite(sprite):
 	
 	result += "\n"
 	return result
+	
 	
 #Create build directory
 print "Loading scratch project file"
