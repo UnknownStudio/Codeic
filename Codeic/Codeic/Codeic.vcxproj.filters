@@ -35,5 +35,8 @@
     <ClCompile Include="Codeic.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Csdl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
