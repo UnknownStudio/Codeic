@@ -3,6 +3,8 @@
 
 #include "stdafx.h"
 #include "Header.h"
+#include "iostream"
+
 using namespace std;
 extern "C" {
 #include <lua.h>  
@@ -40,7 +42,7 @@ static int average(lua_State *L)
 	/* return the number of results */
 	return 2;
 }
-int main(int argc, char*argv[])
+int lua_main(int argc, char*argv[])
 {
 	/* initialize Lua */
 	// 创建一个指向Lua解释器的指针。
@@ -64,3 +66,8 @@ int main(int argc, char*argv[])
 	cin.get();
 	return 0;
 }
+/*int main(int argc, char*argv[])
+{
+	//entroy(argc, argv);
+	return 0;
+}*/
