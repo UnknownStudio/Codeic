@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "util.h"
 
+#define ERROR_BUFFER 200
 //Screen dimension constants
 extern int SCREEN_WIDTH;
 extern int SCREEN_HEIGHT;
@@ -11,7 +12,9 @@ class Csdl
 {
 public:
 	SDL_Window* window = NULL;
-	void Init();
+	SDL_Surface* screenSurface = NULL;
+	SDL_Renderer* renderer = NULL;
+	void Init(char * title, int width, int height, Uint32 backGroundColor);
 };
 //TODO: 
 class Texture
