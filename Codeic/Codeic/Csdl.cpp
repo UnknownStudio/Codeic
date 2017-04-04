@@ -5,57 +5,38 @@ and may not be redistributed without written permission.*/
 //Using SDL and standard IO
 #include <SDL.h>
 #include <stdio.h>
+#include "csdl.h"
 
-
+#define DEBUG true
 
 //#include<stdio.h>
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
 
 int main(int argc, char* args[])
 {
-	//The window we'll be rendering to
-	SDL_Window* window = NULL;
+	Debug("CSDL loading...");
+	if(DEBUG)
+		system("pause");
+	return 0;
+}
 
-	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+void Error(char * message=NULL)
+{
+	if (!message) printf("[ERROR]Some errors happened!\n");
+	printf("[ERROR]%s\n", message);
+}
 
-	//Initialize SDL
+void Debug(char * message)
+{
+	printf("[DEBUG]%s\n", message);
+}
+
+void Csdl::Init()
+{
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		char* mes = new char[200];
+		sprintf_s(mes,200, "SDL fail to initialize:%s", SDL_GetError());
+		Error(mes);
 	}
-	else
-	{
-		//Create window
-		window = SDL_CreateWindow(localeToUTF8("Codeic"), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if (window == NULL)
-		{
-			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-		}
-		else
-		{
-			//Get window surface
-			screenSurface = SDL_GetWindowSurface(window);
-
-			//Fill the surface white
-			SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-
-			//Update the surface
-			SDL_UpdateWindowSurface(window);
-
-			//Wait two seconds
-			SDL_Delay(2000);
-		}
-	}
-
-	//Destroy window
-	SDL_DestroyWindow(window);
-
-	//Quit SDL subsystems
-	SDL_Quit();
-
-	return 0;
 }
