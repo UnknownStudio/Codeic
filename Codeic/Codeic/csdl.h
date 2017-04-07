@@ -8,21 +8,14 @@ extern int SCREEN_WIDTH;
 extern int SCREEN_HEIGHT;
 void Error(char* message);
 void Debug(char* message);
-class Csdl
-{
-public:
-	SDL_Window* window = NULL;
-	SDL_Surface* screenSurface = NULL;
-	SDL_Renderer* renderer = NULL;
-	void Init(char * title, int width, int height, Uint32 backGroundColor);
-};
 //TODO: 
 class Texture
 {
 public:
+	Texture();
+	Texture(int id);
 	SDL_Texture* texture;
 	char* name = NULL;
-	static void loadTexture(char* path);
 	Uint32 colorKey = 0;//将被透明的颜色
 	Uint32 colorMod = 0;//颜色调整
 	Uint8 alphaMod = 10;//透明度
@@ -33,4 +26,16 @@ public:
 	int getID();
 private:
 	int id = 0;
+};
+class Csdl
+{
+public:
+	~Csdl();
+	void close();
+	SDL_Window* window = NULL;
+	SDL_Surface* screenSurface = NULL;
+	SDL_Renderer* renderer = NULL;
+	void Init(char* title, int width, int height);
+	Texture* loadTexture(char* path, char* name);
+	//void Run();
 };

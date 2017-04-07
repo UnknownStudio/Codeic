@@ -1,8 +1,14 @@
+#include "Header.h"
 #include "csdl.h"
 
-void Texture::loadTexture(char * path)
+Texture::Texture()
 {
 
+}
+
+Texture::Texture(int id)
+{
+	this->id = id;
 }
 
 Texture * Texture::setName(char * name)
