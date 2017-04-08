@@ -11,15 +11,20 @@ Texture::Texture(int id)
 	this->id = id;
 }
 
+Texture::~Texture()
+{
+	close();
+}
+
+void Texture::close()
+{
+	SDL_DestroyTexture(texture);
+	texture = NULL;
+}
+
 Texture * Texture::setName(char * name)
 {
 	this->name = name;
-	return this;
-}
-
-Texture * Texture::setColorKey(Uint32 colorKey)
-{
-	this->colorKey = colorKey;
 	return this;
 }
 
