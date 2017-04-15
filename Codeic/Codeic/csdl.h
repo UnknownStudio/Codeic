@@ -12,7 +12,13 @@ void Error(char* message);
 void Debug(char* message);
 void Debug(const char * message);
 void Debug(std::string message);
-//TODO: 
+
+class Texture;
+class Object;
+class Csdl;
+
+typedef int (Event)(Csdl* csdl);
+
 class Texture
 {
 public:
@@ -31,23 +37,31 @@ public:
 private:
 	int id = 0;
 };
+
 class Csdl
 {
 public:
 	std::vector<Texture*> texturePool;
+	std::vector<Object*> objectPool;
 	~Csdl();
 	void close();
 	SDL_Window* window = NULL;
 	SDL_Surface* screenSurface = NULL;
 	SDL_Renderer* renderer = NULL;
+	Event preRunEvent;
+	Event preUpdateEvent;
+	Event postUpdateEvent;
 	void Init(char* title, int width, int height);
-	Texture* Csdl::loadTexture(char* path, char* name, Uint8 colorkey_r = NULL, Uint8 colorkey_g = NULL, Uint8 colorkey_b = NULL);
+	Texture* loadTexture(char* path, char* name, Uint8 colorkey_r = NULL, Uint8 colorkey_g = NULL, Uint8 colorkey_b = NULL);
+	Object* addObject(Object* object);
 	void Run();
 };
+
 class Object
 {
 public:
-	Object();
+	Object(Csdl* csdl);
+	Csdl* csdl;
 	Texture* texture = NULL;
 	char* name = "Object";
 	SDL_Rect* srcRect = NULL;
@@ -56,7 +70,10 @@ public:
 	float angle;
 	SDL_Point* center = NULL;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
+	Event* createEvent;
+	Event* preRenderEvent;
+	Event* postRenderEvent;
 	Object* setTexture(Texture* texture);
 	Object* setName(char* name);
-	void render(Csdl* csdl);
+	void render();
 };

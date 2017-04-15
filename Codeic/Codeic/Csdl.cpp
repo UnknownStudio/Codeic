@@ -51,9 +51,6 @@ void test()
 int main(int argc, char* args[])
 {
 	Debug("CSDL loading...");
-	Point p(100, 200);
-	printf("X:%d", p.x);
-	printf("Y:%d", p.y);
 	if(DEBUG)
 		system("pause");
 	return 0;
@@ -207,12 +204,19 @@ Texture* Csdl::loadTexture(
 	return texture;
 }
 
+Object * Csdl::addObject(Object * object)
+{
+	objectPool.push_back(object);
+}
+
 void Csdl::Run()
 {
+	preRunEvent(this);
 	bool quit = false;
 	SDL_Event e;
 	while (!quit)
 	{
+		preUpdateEvent(this);
 		//Handle events on queue
 		while (SDL_PollEvent(&e))
 		{
@@ -221,8 +225,11 @@ void Csdl::Run()
 			{
 				quit = true;
 			}
-
-
+			for each (Object* obj in objectPool)
+			{
+				obj->render();
+			}
 		}
+		postUpdateEvent(this);
 	}
 }
