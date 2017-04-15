@@ -18,3 +18,15 @@ char *localeToUTF8(char *src)
 	free(unicode_buf);
 	return buf;
 }
+
+Point::Point()
+{
+	this->x = 0;
+	this->y = 0;
+}
+//TODO:
+Point::Point(float x, float y)
+{
+	this->x = x;
+	this->y = y;
+}

@@ -42,5 +42,21 @@ public:
 	SDL_Renderer* renderer = NULL;
 	void Init(char* title, int width, int height);
 	Texture* Csdl::loadTexture(char* path, char* name, Uint8 colorkey_r = NULL, Uint8 colorkey_g = NULL, Uint8 colorkey_b = NULL);
-	//void Run();
+	void Run();
+};
+class Object
+{
+public:
+	Object();
+	Texture* texture = NULL;
+	char* name = "Object";
+	SDL_Rect* srcRect = NULL;
+	SDL_Rect* dstRect = NULL;
+	SDL_Color* colorMod = NULL;
+	float angle;
+	SDL_Point* center = NULL;
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
+	Object* setTexture(Texture* texture);
+	Object* setName(char* name);
+	void render(Csdl* csdl);
 };
