@@ -3,7 +3,7 @@
 Object::Object(Csdl* csdl)
 {
 	this->csdl = csdl;
-	createEvent(csdl);
+	if(createEvent!=NULL)createEvent(csdl);
 }
 
 Object* Object::setTexture(Texture* texture)
@@ -20,10 +20,10 @@ Object * Object::setName(char * name)
 
 void Object::render()
 {
-	preRenderEvent(csdl);
+	if(preRenderEvent!=NULL)preRenderEvent(csdl);
 	SDL_SetTextureColorMod(texture->texture, colorMod->r, colorMod->g, colorMod->b);
 	SDL_SetTextureBlendMode(texture->texture, SDL_BLENDMODE_BLEND);
 	SDL_SetTextureAlphaMod(texture->texture, colorMod->a);
 	SDL_RenderCopyEx(csdl->renderer , texture->texture, srcRect, dstRect, angle, center, flip);
-	postRenderEvent(csdl);
+	if(postRenderEvent!=NULL)postRenderEvent(csdl);
 }
