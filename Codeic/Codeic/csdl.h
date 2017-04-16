@@ -48,9 +48,9 @@ public:
 	SDL_Window* window = NULL;
 	SDL_Surface* screenSurface = NULL;
 	SDL_Renderer* renderer = NULL;
-	Event preRunEvent;
-	Event preUpdateEvent;
-	Event postUpdateEvent;
+	Event* preRunEvent;
+	Event* preUpdateEvent;
+	Event* postUpdateEvent;
 	void Init(char* title, int width, int height);
 	Texture* loadTexture(char* path, char* name, Uint8 colorkey_r = NULL, Uint8 colorkey_g = NULL, Uint8 colorkey_b = NULL);
 	Object* addObject(Object* object);

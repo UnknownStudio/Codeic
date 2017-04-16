@@ -48,7 +48,7 @@ void test()
 	t2.join();
 
 }
-int main(int argc, char* args[])
+int main1(int argc, char* args[])
 {
 	Debug("CSDL loading...");
 	if(DEBUG)
@@ -211,12 +211,12 @@ Object * Csdl::addObject(Object * object)
 
 void Csdl::Run()
 {
-	preRunEvent(this);
+	if(preRunEvent!=NULL)preRunEvent(this);
 	bool quit = false;
 	SDL_Event e;
 	while (!quit)
 	{
-		preUpdateEvent(this);
+		if(preUpdateEvent!=NULL)preUpdateEvent(this);
 		//Handle events on queue
 		while (SDL_PollEvent(&e))
 		{
@@ -230,6 +230,6 @@ void Csdl::Run()
 				obj->render();
 			}
 		}
-		postUpdateEvent(this);
+		if(postUpdateEvent!=NULL)postUpdateEvent(this);
 	}
 }

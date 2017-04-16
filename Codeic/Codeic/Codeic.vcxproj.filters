@@ -54,7 +54,10 @@
       <Filter>Source Files\CSDL</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CSDL</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files\CSDL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
