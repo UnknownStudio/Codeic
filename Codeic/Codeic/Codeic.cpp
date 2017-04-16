@@ -21,7 +21,7 @@ extern "C" {
 lua_State* L;
 static int average(lua_State *L)
 {
-	//·µ»ØÕ»ÖĞÔªËØµÄ¸öÊı  
+	//è¿”å›æ ˆä¸­å…ƒç´ çš„ä¸ªæ•°  
 	int n = lua_gettop(L);
 	double sum = 0;
 	int i;
@@ -45,9 +45,9 @@ static int average(lua_State *L)
 int lua_main(int argc, char*argv[])
 {
 	/* initialize Lua */
-	// ´´½¨Ò»¸öÖ¸ÏòLua½âÊÍÆ÷µÄÖ¸Õë¡£
+	// åˆ›å»ºä¸€ä¸ªæŒ‡å‘Luaè§£é‡Šå™¨çš„æŒ‡é’ˆã€‚
 	L = luaL_newstate();
-	//º¯Êı¼ÓÔØLua¿â
+	//å‡½æ•°åŠ è½½Luaåº“
 	luaL_openlibs(L);
 	/* load Lua libraries */
 	luaL_openlibs(L);

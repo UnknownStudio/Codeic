@@ -37,7 +37,6 @@ public class Codeic {
 
     @Instance(modid)
     public static Codeic instance;
-    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
