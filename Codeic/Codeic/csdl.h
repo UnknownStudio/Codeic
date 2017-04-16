@@ -12,13 +12,15 @@ void Error(char* message);
 void Debug(char* message);
 void Debug(const char * message);
 void Debug(std::string message);
+SDL_Rect* setRect(SDL_Rect* rect,int x, int y, int w, int h);
 
 class Texture;
 class Object;
 class Csdl;
 
-typedef int (Event)(Csdl* csdl);
+typedef void (Event)(Csdl* csdl);
 
+//Use csdl->loadTexture to create Texture.
 class Texture
 {
 public:
@@ -60,8 +62,8 @@ public:
 class Object
 {
 public:
-	Object(Csdl* csdl);
-	Csdl* csdl;
+	Object();
+	Csdl* csdl;//do not need to assigin csdl.it will automatically be assigned in Csdl->addObject
 	Texture* texture = NULL;
 	char* name = "Object";
 	SDL_Rect* srcRect = NULL;

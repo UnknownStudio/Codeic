@@ -73,6 +73,15 @@ void Debug(std::string message)
 {
 	Debug(message.c_str());
 }
+SDL_Rect* setRect(SDL_Rect* rect,int x, int y, int w, int h)
+{
+	if (rect == NULL)rect = new SDL_Rect();
+	rect->x = x;
+	rect->y = y;
+	rect->w = w;
+	rect->h = h;
+	return rect;
+}
 Csdl::~Csdl()
 {
 	close();
@@ -170,7 +179,7 @@ Texture* Csdl::loadTexture(
 )
 {
 	SDL_Texture* loadedTexture = NULL;
-	SDL_Surface* loadedSurface = IMG_Load("pic/A.png");
+	SDL_Surface* loadedSurface = IMG_Load(path);
 	if (loadedSurface == NULL)
 	{
 		//printf("Unable to load image %s! SDL_image Error: %s\n", "pic/A.png", IMG_GetError());
@@ -206,7 +215,9 @@ Texture* Csdl::loadTexture(
 
 Object * Csdl::addObject(Object * object)
 {
+	object->csdl = this;
 	objectPool.push_back(object);
+	return object;
 }
 
 void Csdl::Run()
@@ -216,6 +227,9 @@ void Csdl::Run()
 	SDL_Event e;
 	while (!quit)
 	{
+		//Clear screen
+		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+		SDL_RenderClear(renderer);
 		if(preUpdateEvent!=NULL)preUpdateEvent(this);
 		//Handle events on queue
 		while (SDL_PollEvent(&e))
@@ -225,11 +239,12 @@ void Csdl::Run()
 			{
 				quit = true;
 			}
-			for each (Object* obj in objectPool)
-			{
-				obj->render();
-			}
 		}
+		for each (Object* obj in objectPool)
+		{
+			obj->render();
+		}
+		SDL_RenderPresent(renderer);
 		if(postUpdateEvent!=NULL)postUpdateEvent(this);
 	}
 }
